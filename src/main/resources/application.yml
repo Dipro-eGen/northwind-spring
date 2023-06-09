@@ -1,0 +1,31 @@
+
+spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      ddl-auto: update
+    open-in-view: false
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:9091/db1
+    name: db1
+    username: user1
+    password: 123456
+
+    hikari:
+      connection-timeout: 60000
+      minimum-idle: 15
+      maximum-pool-size: 30
+      idle-timeout: 10000

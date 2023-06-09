@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+
+  db-dev-2:
+    image: postgres:14.5
+    container_name: db-dev-2
+    command: postgres -c 'max_connections=500'
+    ports:
+      - "9091:5432"
+    volumes:
+      - "./db-data:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=user1
+      - POSTGRES_DB=db1
+      - TZ=GMT+6
+      - PGTZ=GMT+6
+
+# sudo docker compose -f northwind-docker-compose.yml down
+# sudo docker compose -f northwind-docker-compose.yml up -d
+
