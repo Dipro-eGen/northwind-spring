@@ -5,6 +5,8 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.List;
+
 @Entity
 @Table(name = "product")
 @Setter
@@ -23,12 +25,6 @@ public class Product {
   @Column(name = "name", nullable = false)
   private String name;
 
-  @Column(name = "supplier_id")
-  private Integer supplierId;
-
-  @Column(name = "category_id")
-  private Integer categoryId;
-
   @Column(name = "quantity_per_unit")
   private String quantityPerUnit;
 
@@ -46,6 +42,23 @@ public class Product {
 
   @Column(name = "discontinued")
   private Boolean discontinued;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "category_id")
+  private Category category;
+
+  @Column(name = "category_id", insertable = false, updatable = false)
+  private String categoryId;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "supplier_id")
+  private Supplier supplier;
+
+  @Column(name = "supplier_id", insertable = false, updatable = false)
+  private String supplierId;
+
+  @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+  private List<OrderDetail> orderDetailList;
 
   public Product(String id) {
     this.id = id;

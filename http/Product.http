@@ -2,7 +2,6 @@ POST http://localhost:8080/product
 Content-Type: application/json
 
 {
-  "id": "p1",
   "name": "product 1",
   "supplierId": 1,
   "categoryId": 1,
