@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
   private final EntityManager entityManager;
-  ProductRepository productRepository;
+ private final ProductRepository productRepository;
 
 
   public Product save(Product product) {

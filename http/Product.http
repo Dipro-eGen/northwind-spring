@@ -1,0 +1,15 @@
+POST http://localhost:8080/product
+Content-Type: application/json
+
+{
+  "id": "p1",
+  "name": "product 1",
+  "supplierId": 1,
+  "categoryId": 1,
+  "quantityPerUnit": "quantityPerUnit 1",
+  "unitPrice": "unitPrice 1",
+  "unitInStock": 1,
+  "unitInOrder": 1,
+  "reOrderLabel": 1,
+  "discontinued": true
+}
