@@ -58,7 +58,7 @@ public class Product {
   private String supplierId;
 
   @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-  private List<OrderDetail> orderDetailList;
+  private List<OrderInfoDetail> orderInfoDetailList;
 
   public Product(String id) {
     this.id = id;

@@ -12,3 +12,16 @@ Content-Type: application/json
   "reOrderLabel": 1,
   "discontinued": true
 }
+
+
+###
+
+POST http://localhost:8080/product/search
+Content-Type: application/json
+
+{
+  "name": "product 1",
+  "page": 0,
+  "size": 100
+}
+

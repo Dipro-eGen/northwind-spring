@@ -56,7 +56,7 @@ public class Customer {
   private String homePage;
 
   @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-  private List<Order> orderList;
+  private List<OrderInfo> orderInfoList;
 
   @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
   private List<CustomerDemographic> customerDemographicList;

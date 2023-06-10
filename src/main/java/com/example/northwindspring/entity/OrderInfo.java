@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_info")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Accessors(chain = true)
-public class Order {
+public class OrderInfo {
 
   @Id
   @GeneratedValue(generator = "uuid")
@@ -64,8 +64,8 @@ public class Order {
   @Column(name = "ship_country")
   private String shipCountry;
 
-  @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-  private List<OrderDetail> orderDetailList;
+  @OneToMany(mappedBy = "orderInfo", fetch = FetchType.LAZY)
+  private List<OrderInfoDetail> orderInfoDetailList;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "employee_id")
@@ -89,7 +89,7 @@ public class Order {
   private String shipperId;
 
 
-  public Order(String id) {
+  public OrderInfo(String id) {
     this.id = id;
   }
 

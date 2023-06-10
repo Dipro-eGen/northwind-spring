@@ -1,13 +1,10 @@
 package com.example.northwindspring.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -57,7 +54,7 @@ public class Employee {
 
 
   @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-  private List<Order> orderList;
+  private List<OrderInfo> orderInfoList;
 
 
   public Employee(String id) {

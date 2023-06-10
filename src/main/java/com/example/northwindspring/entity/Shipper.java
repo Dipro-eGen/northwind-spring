@@ -29,7 +29,7 @@ public class Shipper {
   private String phone;
 
   @OneToMany(mappedBy = "shipper", fetch = FetchType.LAZY)
-  private List<Order> orderList;
+  private List<OrderInfo> orderInfoList;
 
 
   public Shipper(String id) {

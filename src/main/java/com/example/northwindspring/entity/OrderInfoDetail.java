@@ -6,14 +6,14 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "order_detail")
+@Table(name = "order_info_detail")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Accessors(chain = true)
-public class OrderDetail {
+public class OrderInfoDetail {
 
   @Id
   @GeneratedValue(generator = "uuid")
@@ -29,13 +29,12 @@ public class OrderDetail {
   @Column(name = "discount")
   private String discount;
 
-
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "order_id")
-  private Order order;
+  @JoinColumn(name = "order_info_id")
+  private OrderInfo orderInfo;
 
-  @Column(name = "order_id", insertable = false, updatable = false)
-  private String orderId;
+  @Column(name = "order_info_id", insertable = false, updatable = false)
+  private String orderInfoId;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "product_id")
@@ -44,7 +43,7 @@ public class OrderDetail {
   @Column(name = "product_id", insertable = false, updatable = false)
   private String productId;
 
-  public OrderDetail(String id) {
+  public OrderInfoDetail(String id) {
     this.id = id;
   }
 
