@@ -31,11 +31,9 @@ public class OrderInfoDetailService {
   private final EntityManager entityManager;
   private final OrderInfoDetailRepository orderInfoDetailRepository;
 
-
   public OrderInfoDetail save(OrderInfoDetail orderInfoDetail) {
     return orderInfoDetailRepository.save(orderInfoDetail);
   }
-
 
   public Page<OrderInfoDetail> search(OrderInfoDetailSearchDto orderInfoDetailSearchDto) {
     final QOrderInfoDetail qOrderInfoDetail = QOrderInfoDetail.orderInfoDetail;
@@ -44,7 +42,8 @@ public class OrderInfoDetailService {
     Predicate predicate = OrderInfoDetailPredicate.makePredicate(orderInfoDetailSearchDto);
     Pageable pageable = PageRequest.of(orderInfoDetailSearchDto.getPage(), orderInfoDetailSearchDto.getSize());
 
-    var orderInfoDetailJPAQuery = query.from(qOrderInfoDetail)
+    var orderInfoDetailJPAQuery = query
+      .from(qOrderInfoDetail)
       .where(predicate)
       .limit(pageable.getPageSize())
       .offset(pageable.getOffset())

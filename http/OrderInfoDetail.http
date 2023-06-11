@@ -1,0 +1,20 @@
+POST http://localhost:8080/order-info-detail
+Content-Type: application/json
+
+{
+  "unitPrice": "unitPrice 1",
+  "quantity": 4,
+  "discount": "discount 1"
+}
+
+
+###
+
+POST http://localhost:8080/order-info-detail/search
+Content-Type: application/json
+
+{
+  "page": 0,
+  "size": 100
+}
+

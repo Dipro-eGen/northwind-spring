@@ -18,6 +18,9 @@ public class OrderInfoPredicate {
     if (!CollectionUtils.isEmpty(orderInfoSearchDto.getIdList())) {
       builder.and(qOrderInfo.id.in(orderInfoSearchDto.getIdList()));
     }
+    if (StringUtils.isNotBlank(orderInfoSearchDto.getId())) {
+      builder.and(qOrderInfo.id.eq(orderInfoSearchDto.getId()));
+    }
     if (StringUtils.isNotBlank(orderInfoSearchDto.getIdNotEqual())) {
       builder.and(qOrderInfo.id.ne(orderInfoSearchDto.getIdNotEqual()));
     }

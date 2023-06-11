@@ -1,0 +1,38 @@
+POST http://localhost:8080/order-info
+Content-Type: application/json
+
+{
+  "orderDate": "2023-06-11 00:00:00",
+  "requiredDate": "2023-06-11 00:00:00",
+  "shippedDate": "2023-06-12 00:00:00",
+  "shippedVia": "shippedVia 1",
+  "freight": "freight 1",
+  "shipName": "shipName 1",
+  "shipAddress": "shipAddress 1",
+  "shipCity": "shipCity 1",
+  "shipRegion": "shipRegion 1",
+  "orderInfoDetailList" : [
+    {
+      "unitPrice": "unitPrice 1",
+      "quantity": 4,
+      "discount": "discount 1"
+    },
+    {
+      "unitPrice": "unitPrice 2",
+      "quantity": 5,
+      "discount": "discount 2"
+    }
+  ]
+}
+
+
+###
+
+POST http://localhost:8080/order-info/search
+Content-Type: application/json
+
+{
+  "page": 0,
+  "size": 100
+}
+
