@@ -29,3 +29,13 @@ spring:
       minimum-idle: 15
       maximum-pool-size: 30
       idle-timeout: 10000
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE

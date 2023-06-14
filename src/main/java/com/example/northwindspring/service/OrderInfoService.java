@@ -8,6 +8,7 @@ import com.example.northwindspring.entity.QOrderInfoDetail;
 import com.example.northwindspring.repository.OrderInfoDetailRepository;
 import com.example.northwindspring.repository.OrderInfoRepository;
 import com.example.northwindspring.service.predicate.OrderInfoPredicate;
+import com.example.northwindspring.util.EntityTransformUtil;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
@@ -18,6 +19,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -62,11 +65,19 @@ public class OrderInfoService {
       .leftJoin(qOrderInfo.orderInfoDetailList, qOrderInfoDetail).fetchJoin()
       .where(predicate)
       .limit(pageable.getPageSize())
-      .offset(pageable.getOffset())
-      //.orderBy(dept.createdDate.desc())
-      ;
-    return new PageImpl<>(orderInfoJPAQuery.fetch(), pageable, orderInfoJPAQuery.fetchCount());
+      .offset(pageable.getOffset());
+
+    List<OrderInfo> orderInfoList = orderInfoJPAQuery.fetch();
+
+    List<OrderInfo> orderInfoListNew = orderInfoList.parallelStream().map(orderInfo -> {
+      var t = EntityTransformUtil.copyValueProp(orderInfo);
+      t.setOrderInfoDetailList(EntityTransformUtil.copyList(t.getOrderInfoDetailList()));
+      return t;
+    }).toList();
+
+    return new PageImpl<>(orderInfoListNew, pageable, orderInfoJPAQuery.fetchCount());
   }
 
 
 }
+

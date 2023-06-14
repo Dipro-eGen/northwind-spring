@@ -17,6 +17,8 @@ services:
       - TZ=GMT+6
       - PGTZ=GMT+6
 
+    # jdbc:postgresql://localhost:9091/db1?user=user1&password=123456
+
 # sudo docker compose -f northwind-docker-compose.yml down
 # sudo docker compose -f northwind-docker-compose.yml up -d
 
